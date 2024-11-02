@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/box.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/boxValid.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/target.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/wall.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>SpriteFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
