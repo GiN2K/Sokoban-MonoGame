@@ -6,8 +6,8 @@ namespace Sokoban;
 
 public class Player
 {
-    private int r; // Player's r position on the grid
-    private int c; // Player's Y position on the grid
+    private int r;
+    private int c;
     private Grid grid;
 
     public Player(int r, int c, Grid grid)
@@ -96,7 +96,7 @@ public class Player
                         }
                     }
                         this.c += 1;
-                        canMove = false; // Prevent further movement until key is released
+                        canMove = false;
 
                     
                 }
@@ -131,7 +131,7 @@ public class Player
                         
                     }
                         this.r -= 1;
-                        canMove = false; // Prevent further movement until key is released
+                        canMove = false;
 
                     
 
@@ -168,7 +168,7 @@ public class Player
 
 
                         this.r += 1;
-                        canMove = false; // Prevent further movement until key is released
+                        canMove = false;
 
                     
 
