@@ -7,6 +7,15 @@ namespace Sokoban
 {
     public class Game1 : Game
     {
+        public enum GameState
+        {
+            MainMenu,
+            Playing
+        }
+
+        public GameState currentGameState = GameState.MainMenu;
+        
+        
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         
@@ -19,6 +28,9 @@ namespace Sokoban
         private Texture2D playerTexture;
         private Texture2D boxValidTexture;
         
+        private Texture2D playButtonTexture;
+        private Rectangle playButtonRect = new Rectangle(400, 150, 200, 200);
+        // playButtonRect = new Rectangle(400, 150, 200, 200);
         
         
         // Code pour alert
@@ -64,6 +76,9 @@ namespace Sokoban
             playerTexture = Content.Load<Texture2D>("player");
             boxValidTexture = Content.Load<Texture2D>("boxValid");
             _font = Content.Load<SpriteFont>("SpriteFont");
+            playButtonTexture = Content.Load<Texture2D>("play");
+            
+
 
             
             // levelData par default 10x20
@@ -87,7 +102,17 @@ namespace Sokoban
         protected override void Update(GameTime gameTime)
         {
 
-            
+            MouseState mouse = Mouse.GetState();
+
+            if (currentGameState == GameState.MainMenu)
+            {
+                if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
+                {
+                    currentGameState = GameState.Playing; // Start the game
+                }
+            }
+            else{
+
             if (grid.IsGameWon()) // Alerte si le jeu est gagné
             {
                 showAlert = true;
@@ -100,8 +125,9 @@ namespace Sokoban
                 showAlert = false;
             }
 
-            base.Update(gameTime);
             player.Update(gameTime, GraphicsDevice);
+            
+            }
             base.Update(gameTime);
         }
 
@@ -110,6 +136,19 @@ namespace Sokoban
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+            
+            if (currentGameState == GameState.MainMenu)
+            {
+                
+
+                Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
+                Color[] data = new Color[200 * 50];
+                for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
+                rect.SetData(data);
+                spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
+                spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
+            }
+            else{
             grid.Draw(spriteBatch);
             player.Draw(spriteBatch, playerTexture);
             
@@ -125,6 +164,8 @@ namespace Sokoban
                 for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
                 rect.SetData(data);
                 spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, 220, 70), Color.White);
+            }
+            
             }
             
             spriteBatch.End();
