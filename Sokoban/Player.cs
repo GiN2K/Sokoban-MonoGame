@@ -25,7 +25,8 @@ public class Player
     public void Update(GameTime gameTime, GraphicsDevice GraphicsDevice)
     {
         KeyboardState currentKeyboardState = Keyboard.GetState();
-
+        
+        
         if (canMove)
         {
             if (currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up))

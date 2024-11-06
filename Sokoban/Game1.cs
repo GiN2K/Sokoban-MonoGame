@@ -10,7 +10,8 @@ namespace Sokoban
         public enum GameState
         {
             MainMenu,
-            Playing
+            Playing,
+            Restart
         }
 
         public GameState currentGameState = GameState.MainMenu;
@@ -32,7 +33,21 @@ namespace Sokoban
         private Rectangle playButtonRect = new Rectangle(400, 150, 200, 200);
         // playButtonRect = new Rectangle(400, 150, 200, 200);
         
-        
+        string[,] levelData = {
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", " ", "P", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", ".", ".", " ", " ", "#", "#", "#" },
+            { "#", "#", "#", "#", " ", "#", " ", "#", "#", " ", "#", " ", "B", " ", " ", "#", " ", "#", "#", "#" },
+            { "#", "#", " ", "#", " ", "#", " ", " ", " ", " ", " ", "#", " ", "#", " ", "#", " ", "#", "#", "#" },
+            { "#", "#", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", " ", "#", "B", " ", " ", " ", "#", "#",},
+            { "#", "#", "#", "#", "#", "#", "#", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", "#", "#", "#" },
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
+        };
+
+
+
         // Code pour alert
         private SpriteFont _font;
         private bool showAlert = false;
@@ -82,28 +97,19 @@ namespace Sokoban
 
             
             // levelData par default 10x20
-            string[,] levelData = {
-                { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-                { "#", " ", "P", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-                { "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", ".", ".", " ", " ", "#", "#", "#" },
-                { "#", "#", "#", "#", " ", "#", " ", "#", "#", " ", "#", " ", "B", " ", " ", "#", " ", "#", "#", "#" },
-                { "#", "#", " ", "#", " ", "#", " ", " ", " ", " ", " ", "#", " ", "#", " ", "#", " ", "#", "#", "#" },
-                { "#", "#", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", " ", "#", "B", " ", " ", " ", "#", "#",},
-                { "#", "#", "#", "#", "#", "#", "#", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", "#", "#", "#" },
-                { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-                { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-                { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
-            };
-
+            
             grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelData,showAlert);
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
         }
 
         protected override void Update(GameTime gameTime)
         {
-
+            KeyboardState currentKeyboardState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
-
+            if(currentKeyboardState.IsKeyDown(Keys.Space))
+            {
+                currentGameState = GameState.Restart;
+            }
             if (currentGameState == GameState.MainMenu)
             {
                 if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
@@ -111,8 +117,14 @@ namespace Sokoban
                     currentGameState = GameState.Playing; // Start the game
                 }
             }
-            else{
-
+            else if (currentGameState == GameState.Restart)
+            {
+                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelData, showAlert);
+                player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
+                currentGameState = GameState.Playing;
+            }
+            else if(currentGameState == GameState.Playing)
+            {
             if (grid.IsGameWon()) // Alerte si le jeu est gagné
             {
                 showAlert = true;
@@ -148,7 +160,10 @@ namespace Sokoban
                 spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
                 spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
             }
-            else{
+            
+            
+            else if (currentGameState == GameState.Playing)
+            {
             grid.Draw(spriteBatch);
             player.Draw(spriteBatch, playerTexture);
             
