@@ -18,9 +18,10 @@ namespace Sokoban
             Playing,
             Restart
         }
-        
-        
 
+
+        private int totalLevels = 0;
+        private int currentLevel = 0;
         public GameState currentGameState = GameState.MainMenu;
         
         
@@ -41,43 +42,8 @@ namespace Sokoban
         private Texture2D playButtonTexture;
         private Rectangle playButtonRect = new Rectangle(400, 150, 200, 200);
 
-        
-        private List<string> levelRows;
-        
-        private string[,] levelData = new string[10, 20];
-        string[,] levelData1 = {
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", " ", "P", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", ".", ".", " ", " ", "#", "#", "#" },
-            { "#", "#", "#", "#", " ", "#", " ", "#", "#", " ", "#", " ", "B", " ", " ", "#", " ", "#", "#", "#" },
-            { "#", "#", " ", "#", " ", "#", " ", " ", " ", " ", " ", "#", " ", "#", " ", "#", " ", "#", "#", "#" },
-            { "#", "#", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", " ", "#", "B", " ", " ", " ", "#", "#",},
-            { "#", "#", "#", "#", "#", "#", "#", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", "#", "#", "#" },
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
-        };
-        
-        string[,] levelData2  = {
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", ".", "P", "B", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", " ", "B", ".", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", ".", "#", "#", "B", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", " ", "#", " ", ".", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "B", " ", ".B", "B", "B", ".", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", " ", " ", " ", ".", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
-            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
-        };
-
-
-
-
-
-
-       
-
+        private List<List<string>> rawLevelData;
+        private List<string[,]> levelDataList = new List<string[,]>();
 
 
         // Code pour alert
@@ -125,23 +91,34 @@ namespace Sokoban
             _font = Content.Load<SpriteFont>("SpriteFont");
             playButtonTexture = Content.Load<Texture2D>("play");
             
-            levelRows = Content.Load<List<string>>("File");
-            
-            // levelData from xml file
-            for (int i=0;i<10;i++)
-            {
-                var rowAsArray = levelRows[i].Split(',');
+            // levelDataList = Content.Load<List<List<string>>>("File"); 
 
-                for (int j=0;j<20;j++)
+            rawLevelData = Content.Load<List<List<string>>>("File");
+            
+            
+            foreach (var level in rawLevelData)
+            {
+                string[,] levelData = new string[10, 20];
+                for (int i = 0; i < 10; i++)
                 {
-                    levelData[i,j] = rowAsArray[j];
+                    var rowAsArray = level[i].Split(',');
+
+                    for (int j = 0; j < 20; j++)
+                    {
+                        levelData[i, j] = rowAsArray[j];
+                    }
                 }
+                levelDataList.Add(levelData);
+                totalLevels++;
             }
+            
+            
+            
 
             
             // levelData par default 10x20
             
-            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelData,showAlert);
+            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel],showAlert);
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
         }
 
@@ -162,7 +139,7 @@ namespace Sokoban
             }
             else if (currentGameState == GameState.Restart)
             {
-                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelData, showAlert);
+                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel], showAlert);
                 player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
                 currentGameState = GameState.Playing;
             }
