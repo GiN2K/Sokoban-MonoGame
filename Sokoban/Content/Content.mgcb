@@ -44,6 +44,11 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;SpriteFont.spritefont
 
+#begin File.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:File.xml
+
 #begin ground.png
 /importer:TextureImporter
 /processor:TextureProcessor

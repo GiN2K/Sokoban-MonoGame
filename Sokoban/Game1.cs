@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Xml.Linq;
+using Microsoft.Xna.Framework.Content;
 
 namespace Sokoban
 {
@@ -13,6 +18,8 @@ namespace Sokoban
             Playing,
             Restart
         }
+        
+        
 
         public GameState currentGameState = GameState.MainMenu;
         
@@ -29,11 +36,16 @@ namespace Sokoban
         private Texture2D playerTexture;
         private Texture2D boxValidTexture;
         
+        
+        
         private Texture2D playButtonTexture;
         private Rectangle playButtonRect = new Rectangle(400, 150, 200, 200);
-        // playButtonRect = new Rectangle(400, 150, 200, 200);
+
         
-        string[,] levelData = {
+        private List<string> levelRows;
+        
+        private string[,] levelData = new string[10, 20];
+        string[,] levelData1 = {
             { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
             { "#", " ", "P", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
             { "#", " ", " ", " ", " ", " ", " ", " ", "#", "#", "#", " ", " ", ".", ".", " ", " ", "#", "#", "#" },
@@ -45,6 +57,26 @@ namespace Sokoban
             { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
             { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
         };
+        
+        string[,] levelData2  = {
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", " ", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", ".", "P", "B", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", " ", "B", ".", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", ".", "#", "#", "B", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", " ", "#", " ", ".", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "B", " ", ".B", "B", "B", ".", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", " ", " ", " ", ".", " ", " ", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" },
+            { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#" }
+        };
+
+
+
+
+
+
+       
 
 
 
@@ -57,8 +89,8 @@ namespace Sokoban
             this.showAlert = showAlert;
         }
 
-        private string alertMessage = "Felicitations! Tu as reussi"; // Alert message
-        private TimeSpan alertDuration = TimeSpan.FromSeconds(3); // Alert duration
+        private string alertMessage = "Felicitations! Tu as reussi";
+        private TimeSpan alertDuration = TimeSpan.FromSeconds(10); // alert duraion, je vais la changer pour quil reste avant que lutilisateur change le niveau
         private TimeSpan alertTime;
         
         
@@ -93,7 +125,18 @@ namespace Sokoban
             _font = Content.Load<SpriteFont>("SpriteFont");
             playButtonTexture = Content.Load<Texture2D>("play");
             
+            levelRows = Content.Load<List<string>>("File");
+            
+            // levelData from xml file
+            for (int i=0;i<10;i++)
+            {
+                var rowAsArray = levelRows[i].Split(',');
 
+                for (int j=0;j<20;j++)
+                {
+                    levelData[i,j] = rowAsArray[j];
+                }
+            }
 
             
             // levelData par default 10x20

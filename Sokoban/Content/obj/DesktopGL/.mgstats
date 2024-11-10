@@ -1,9 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/box.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/box.xnb","TextureProcessor","Texture2DContent",1550,16469,0.2753658
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/boxValid.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/boxValid.xnb","TextureProcessor","Texture2DContent",1763,16469,0.436258
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/SpriteFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.4892322
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/ground.xnb","TextureProcessor","Texture2DContent",2801,16469,0.0068103
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/play.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/play.xnb","TextureProcessor","Texture2DContent",197489,3960917,0.7933451
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/player.xnb","TextureProcessor","Texture2DContent",2707,16469,0.0028902
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/target.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/target.xnb","TextureProcessor","Texture2DContent",1899,16469,0.0066734
-"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/wall.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/wall.xnb","TextureProcessor","Texture2DContent",1458,16469,0.0028741
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/box.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/box.xnb","TextureProcessor","Texture2DContent",1550,16469,2.7269413
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/boxValid.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/boxValid.xnb","TextureProcessor","Texture2DContent",1763,16469,0.0024804
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/SpriteFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.2867073
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.xml","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/File.xnb","PassThroughProcessor","List<string>",762,634,0.0994687
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/ground.xnb","TextureProcessor","Texture2DContent",2801,16469,0.0031652
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/play.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/play.xnb","TextureProcessor","Texture2DContent",197489,3960917,0.1211474
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/player.xnb","TextureProcessor","Texture2DContent",2707,16469,0.0022634
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/target.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/target.xnb","TextureProcessor","Texture2DContent",1899,16469,0.0021921
+"F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/wall.png","F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/wall.xnb","TextureProcessor","Texture2DContent",1458,16469,0.003063

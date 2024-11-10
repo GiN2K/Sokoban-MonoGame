@@ -7,6 +7,7 @@
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/box.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/boxValid.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.xml</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/play.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png</File>
@@ -17,6 +18,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>SpriteFont.spritefont</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

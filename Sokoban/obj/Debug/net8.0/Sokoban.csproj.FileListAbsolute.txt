@@ -32,3 +32,5 @@ F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\boxValid.x
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\SpriteFont.xnb
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\obj\Debug\net8.0\Sokoban.sourcelink.json
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\play.xnb
+F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\Levels.xnb
+F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\File.xnb
