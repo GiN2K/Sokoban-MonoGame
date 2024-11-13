@@ -45,21 +45,16 @@ namespace Sokoban
         private List<List<string>> rawLevelData;
         private List<string[,]> levelDataList = new List<string[,]>();
 
-
-        // Code pour alert
-        private SpriteFont _font;
-        private bool showAlert = false;
-
-        public void SetShowAlert(bool showAlert)
-        {
-            this.showAlert = showAlert;
-        }
+        
+        public static SpriteFont _font;
+        
 
         private string alertMessage = "Felicitations! Tu as reussi";
         private TimeSpan alertDuration = TimeSpan.FromSeconds(10); // alert duraion, je vais la changer pour quil reste avant que lutilisateur change le niveau
         private TimeSpan alertTime;
         
-        
+        private Alert alert;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -117,9 +112,10 @@ namespace Sokoban
 
             
             // levelData par default 10x20
-            
-            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel],showAlert);
+            alert = new Alert();
+            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel],alert.GetShowAlert());
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -139,23 +135,18 @@ namespace Sokoban
             }
             else if (currentGameState == GameState.Restart)
             {
-                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel], showAlert);
+                alert = new Alert();
+                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel], alert.GetShowAlert());
                 player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
                 currentGameState = GameState.Playing;
             }
             else if(currentGameState == GameState.Playing)
             {
-            if (grid.IsGameWon()) // Alerte si le jeu est gagné
-            {
-                showAlert = true;
-                alertTime = gameTime.TotalGameTime + alertDuration;
-            }
-
-            // Check if the alert time has expired
-            if (showAlert && gameTime.TotalGameTime >= alertTime)
-            {
-                showAlert = false;
-            }
+                if (grid.IsGameWon()) // Alerte si le jeu est gagné
+                {
+                    alert.SetShowAlert(true);
+                    alert.Update(gameTime, grid);
+                }
 
             player.Update(gameTime, GraphicsDevice);
             
@@ -188,17 +179,9 @@ namespace Sokoban
             player.Draw(spriteBatch, playerTexture);
             
             // draw alert
-            if (showAlert)
+            if (alert.GetShowAlert())
             {
-                Vector2 alertPosition = new Vector2(100, 100);
-                spriteBatch.DrawString(_font, alertMessage, alertPosition, Color.Red);
-
-                // Background Box Pour alert
-                Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
-                Color[] data = new Color[200 * 50];
-                for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
-                rect.SetData(data);
-                spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, 220, 70), Color.White);
+                alert.Draw(gameTime, spriteBatch, GraphicsDevice);
             }
             
             }
