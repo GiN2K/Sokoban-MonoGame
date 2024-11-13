@@ -13,7 +13,6 @@ public class Grid
     private Texture2D boxTexture;
     private Texture2D targetTexture;
     private Texture2D boxValidTexture;
-    private bool showAlert = false;
 
     // fonction pour aider a copier le tableau ( a la place de l'utiliser par reference)
     public static string[,] DeepCopy(string[,] original)
@@ -33,7 +32,7 @@ public class Grid
         return copy;
     }
 
-    public Grid(Texture2D wall, Texture2D box, Texture2D target,Texture2D boxValid,string[,] levelData,bool showAlert)
+    public Grid(Texture2D wall, Texture2D box, Texture2D target,Texture2D boxValid,string[,] levelData)
     {
         wallTexture = wall;
         boxTexture = box;
@@ -41,7 +40,6 @@ public class Grid
         boxValidTexture = boxValid;
 
         cells = DeepCopy(levelData);
-        this.showAlert = showAlert;
     }
 
     public bool IsGameWon()

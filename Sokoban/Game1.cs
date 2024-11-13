@@ -113,7 +113,7 @@ namespace Sokoban
             
             // levelData par default 10x20
             alert = new Alert();
-            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel],alert.GetShowAlert());
+            grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel]);
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
             
         }
@@ -136,7 +136,7 @@ namespace Sokoban
             else if (currentGameState == GameState.Restart)
             {
                 alert = new Alert();
-                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel], alert.GetShowAlert());
+                grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
                 player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
                 currentGameState = GameState.Playing;
             }
