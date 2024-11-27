@@ -56,13 +56,18 @@ public class Grid
         }
         return true;
     }
+    
+    public string[,] GetCells()
+    {
+        return cells;
+    }
     public int GetPlayerPositionC()
     {
         for(int i=0;i<rows;i++)
         {
             for(int j=0;j<columns;j++)
             {
-                if(cells[i,j]=="P")
+                if(cells[i,j]=="P" || cells[i,j]==".P")
                 {
                     return i;
                 }
@@ -77,7 +82,7 @@ public class Grid
         {
             for(int j=0;j<columns;j++)
             {
-                if(cells[i,j]=="P")
+                if(cells[i,j]=="P" || cells[i,j]==".P")
                 {
                     return j;
                 }

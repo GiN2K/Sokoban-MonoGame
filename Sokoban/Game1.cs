@@ -55,6 +55,18 @@ namespace Sokoban
         
         private Alert alert;
 
+        
+        
+        
+        
+        
+        //dropdown menu
+        Texture2D buttonTexture;
+        Texture2D itemTexture;
+        DropdownMenu dropdownMenu;
+        
+        
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -91,6 +103,18 @@ namespace Sokoban
             rawLevelData = Content.Load<List<List<string>>>("File");
             
             
+            
+            // dropdwon menu
+            buttonTexture = new Texture2D(GraphicsDevice, 1, 1);
+            buttonTexture.SetData(new[] { Color.White });
+
+            itemTexture = new Texture2D(GraphicsDevice, 1, 1);
+            itemTexture.SetData(new[] { Color.Gray });
+
+            List<string> items = new List<string> { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10","Level 11", "Level 12" };
+            dropdownMenu = new DropdownMenu(_font, buttonTexture, itemTexture, new Vector2(100, 100), 200, items);
+            
+            
             foreach (var level in rawLevelData)
             {
                 string[,] levelData = new string[10, 20];
@@ -117,9 +141,22 @@ namespace Sokoban
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
             
         }
-
+        MouseState currentMouseState;
+        MouseState previousMouseState;
+        KeyboardState previousKeyboardState;
+        
         protected override void Update(GameTime gameTime)
         {
+            // dropdown menu
+            currentMouseState = Mouse.GetState();
+            dropdownMenu.Update(currentMouseState, previousMouseState);
+            previousMouseState = currentMouseState;
+            if (currentGameState == GameState.MainMenu && dropdownMenu.GetSelectedIndex() != -1)
+            { 
+                currentLevel = dropdownMenu.GetSelectedIndex();
+                currentGameState = GameState.Restart;
+            }
+            
             KeyboardState currentKeyboardState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
             if(currentKeyboardState.IsKeyDown(Keys.Space))
@@ -128,6 +165,8 @@ namespace Sokoban
             }
             if (currentGameState == GameState.MainMenu)
             {
+                
+                
                 if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
                 {
                     currentGameState = GameState.Playing; // Start the game
@@ -142,15 +181,41 @@ namespace Sokoban
             }
             else if(currentGameState == GameState.Playing)
             {
+                // SaveProgress player1 = new SaveProgress(); 
+                if (currentKeyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S))
+                {
+                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "Save.xml");
+                    ArrayToXmlSerializer.SerializeToFile(grid.GetCells(), filePath);
+                }
+                
+                
                 if (grid.IsGameWon()) // Alerte si le jeu est gagné
                 {
                     alert.SetShowAlert(true);
                     alert.Update(gameTime, grid);
+                    if (currentKeyboardState.IsKeyDown(Keys.N) && previousKeyboardState.IsKeyUp(Keys.N))
+                    {
+                        if(currentLevel  == totalLevels-1)
+                        {
+                            // currentLevel = 0;
+                            dropdownMenu.SetSelectedIndex(-1);
+                            currentGameState = GameState.MainMenu;
+                        }
+                        else{
+                        alert.SetShowAlert(false);
+                        currentLevel += 1;
+                        currentGameState = GameState.Restart;
+                        }
+                    }
+                    
+                    
                 }
 
             player.Update(gameTime, GraphicsDevice);
             
             }
+            previousKeyboardState = currentKeyboardState;
+
             base.Update(gameTime);
         }
 
@@ -162,7 +227,7 @@ namespace Sokoban
             
             if (currentGameState == GameState.MainMenu)
             {
-                
+                dropdownMenu.Draw(spriteBatch);
 
                 Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
                 Color[] data = new Color[200 * 50];

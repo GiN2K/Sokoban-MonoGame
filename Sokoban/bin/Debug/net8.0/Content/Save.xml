@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:ns="Microsoft.Xna.Framework">
+  <Asset Type="System.Collections.Generic.List[System.Collections.Generic.List[string]]">
+    <Item>
+      <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
+      <Item>#, , , ,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
+      <Item>#, , , , , , , ,#,#,#, , ,.P,.B, , ,#,#,#</Item>
+      <Item>#,#,#,#, ,#, ,#,#, ,#, , , , ,#, ,#,#,#</Item>
+      <Item>#,#, ,#, ,#, , , , , ,#, ,#, ,#, ,#,#,#</Item>
+      <Item>#,#, , , , , ,#,#,#, , , ,#,B, , , ,#,#</Item>
+      <Item>#,#,#,#,#,#,#, , , , , , ,#, , , ,#,#,#</Item>
+      <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
+      <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
+      <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
+    </Item>
+  </Asset>
+</XnaContent>
