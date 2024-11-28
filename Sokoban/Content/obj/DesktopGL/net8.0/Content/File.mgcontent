@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.xml</SourceFile>
-  <SourceTime>2024-11-27T19:45:33.8420507+01:00</SourceTime>
+  <SourceTime>2024-11-27T19:48:05.8811661+01:00</SourceTime>
   <DestFile>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/Content/File.xnb</DestFile>
-  <DestTime>2024-11-27T19:45:36.4419892+01:00</DestTime>
+  <DestTime>2024-11-27T20:24:45.6585517+01:00</DestTime>
   <Importer>XmlImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>PassThroughProcessor</Processor>

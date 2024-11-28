@@ -4,15 +4,25 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Sokoban.Content;
 
-public class LoadProgress
+public class LoadLevelOrProgress
 {
     private List<List<string>> rawLevelData;
-    private List<string[,]> levelDataList = new List<string[,]>();
     private int totalLevels = 0;
     
-    protected override void LoadContent()
+
+    public LoadLevelOrProgress(List<List<string>> rawLevelData)
     {
-        rawLevelData = Content.Load<List<List<string>>>("File");
+        this.rawLevelData = rawLevelData;
+    }
+    public int GetTotalLevels()
+    {
+        return totalLevels;
+    }
+    
+    public List<string[,]> XMLtoLevel()
+    {
+        List<string[,]> levelDataList = new List<string[,]>();
+
         foreach (var level in rawLevelData)
         {
             string[,] levelData = new string[10, 20];
@@ -29,5 +39,7 @@ public class LoadProgress
             levelDataList.Add(levelData);
             totalLevels++;
         }
+
+        return levelDataList;
     }
 }

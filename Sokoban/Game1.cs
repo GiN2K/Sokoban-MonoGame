@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework.Content;
+using Sokoban.Content;
 
 namespace Sokoban
 {
@@ -20,7 +21,7 @@ namespace Sokoban
         }
 
 
-        private int totalLevels = 0;
+        private int totalLevels;
         private int currentLevel = 0;
         public GameState currentGameState = GameState.MainMenu;
         
@@ -55,7 +56,7 @@ namespace Sokoban
         
         private Alert alert;
 
-        
+        private SaveProgress sessionSaving;
         
         
         
@@ -97,9 +98,6 @@ namespace Sokoban
             boxValidTexture = Content.Load<Texture2D>("boxValid");
             _font = Content.Load<SpriteFont>("SpriteFont");
             playButtonTexture = Content.Load<Texture2D>("play");
-            
-            // levelDataList = Content.Load<List<List<string>>>("File"); 
-
             rawLevelData = Content.Load<List<List<string>>>("File");
             
             
@@ -113,25 +111,15 @@ namespace Sokoban
 
             List<string> items = new List<string> { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10","Level 11", "Level 12" };
             dropdownMenu = new DropdownMenu(_font, buttonTexture, itemTexture, new Vector2(100, 100), 200, items);
-            
-            
-            foreach (var level in rawLevelData)
-            {
-                string[,] levelData = new string[10, 20];
-                for (int i = 0; i < 10; i++)
-                {
-                    var rowAsArray = level[i].Split(',');
 
-                    for (int j = 0; j < 20; j++)
-                    {
-                        levelData[i, j] = rowAsArray[j];
-                    }
-                }
-                levelDataList.Add(levelData);
-                totalLevels++;
-            }
             
+            //Load Level Data from XML or progress
+            LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
+            levelDataList = session.XMLtoLevel();
             
+            totalLevels = session.GetTotalLevels();
+            
+            sessionSaving = new SaveProgress(levelDataList);
             
 
             
@@ -181,11 +169,11 @@ namespace Sokoban
             }
             else if(currentGameState == GameState.Playing)
             {
-                // SaveProgress player1 = new SaveProgress(); 
                 if (currentKeyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S))
                 {
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "Save.xml");
-                    ArrayToXmlSerializer.SerializeToFile(grid.GetCells(), filePath);
+                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "Save1.xml");
+                    sessionSaving.ChangeLevel(grid.GetCells(),currentLevel);
+                    sessionSaving.SaveToXML(filePath);
                 }
                 
                 
