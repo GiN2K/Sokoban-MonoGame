@@ -44,7 +44,6 @@ public class DropdownMenu
     {
         Point mousePosition = new Point(mouseState.X, mouseState.Y);
 
-        // Toggle dropdown on button click
         if (_buttonBounds.Contains(mousePosition) && mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
         {
             _isOpen = !_isOpen;
@@ -52,7 +51,6 @@ public class DropdownMenu
 
         if (_isOpen)
         {
-            // Check for clicks on items
             for (int i = 0; i < _itemBounds.Count; i++)
             {
                 if (_itemBounds[i].Contains(mousePosition) && mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
@@ -74,14 +72,12 @@ public class DropdownMenu
     }
     public void Draw(SpriteBatch spriteBatch)
     {
-        // Draw button
         spriteBatch.Draw(_buttonTexture, _buttonBounds, Color.White);
         string buttonText = _selectedIndex >= 0 ? _items[_selectedIndex] : "Select Level";
         spriteBatch.DrawString(_font, buttonText, new Vector2(_buttonBounds.X + 5, _buttonBounds.Y + 5), Color.Black);
 
         if (_isOpen)
         {
-            // Draw dropdown items
             for (int i = 0; i < _items.Count; i++)
             {
                 spriteBatch.Draw(_itemTexture, _itemBounds[i], Color.LightGray);

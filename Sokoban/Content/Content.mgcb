@@ -61,6 +61,23 @@
 /processorParam:TextureFormat=Color
 /build:ground.png
 
+#begin load.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:load.png
+
+#begin LoadedLevel.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:LoadedLevel.xml
+
 #begin play.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,6 +101,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:player.png
+
+#begin Screenshot_61.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Screenshot_61.png
 
 #begin target.png
 /importer:TextureImporter

@@ -9,8 +9,11 @@
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.xml</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/load.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/LoadedLevel.xml</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/play.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png</File>
+    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/Screenshot_61.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/target.png</File>
     <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/wall.png</File>
   </SourceFiles>
@@ -18,6 +21,9 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>SpriteFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

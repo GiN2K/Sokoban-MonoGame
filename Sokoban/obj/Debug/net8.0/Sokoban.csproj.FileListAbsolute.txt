@@ -34,3 +34,6 @@ F:\Users\Amine\RiderProjects\Sokoban\Sokoban\obj\Debug\net8.0\Sokoban.sourcelink
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\play.xnb
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\Levels.xnb
 F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\File.xnb
+F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\load.xnb
+F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\Screenshot_61.xnb
+F:\Users\Amine\RiderProjects\Sokoban\Sokoban\bin\Debug\net8.0\Content\LoadedLevel.xnb

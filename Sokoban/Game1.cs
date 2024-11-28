@@ -38,6 +38,9 @@ namespace Sokoban
         private Texture2D playerTexture;
         private Texture2D boxValidTexture;
         
+        private Texture2D loadButtonTexture;
+        private Rectangle loadButtonRect = new Rectangle(700, 70, 250, 80);
+
         
         
         private Texture2D playButtonTexture;
@@ -46,18 +49,16 @@ namespace Sokoban
         private List<List<string>> rawLevelData;
         private List<string[,]> levelDataList = new List<string[,]>();
 
+
+        private List<List<string>> rawLoadedLevelData;
+        private List<string[,]> loadedLevelDataList = new List<string[,]>();
+
         
         public static SpriteFont _font;
-        
-
-        private string alertMessage = "Felicitations! Tu as reussi";
-        private TimeSpan alertDuration = TimeSpan.FromSeconds(10); // alert duraion, je vais la changer pour quil reste avant que lutilisateur change le niveau
-        private TimeSpan alertTime;
         
         private Alert alert;
 
         private SaveProgress sessionSaving;
-        
         
         
         
@@ -98,8 +99,11 @@ namespace Sokoban
             boxValidTexture = Content.Load<Texture2D>("boxValid");
             _font = Content.Load<SpriteFont>("SpriteFont");
             playButtonTexture = Content.Load<Texture2D>("play");
+            loadButtonTexture = Content.Load<Texture2D>("load");
+
             rawLevelData = Content.Load<List<List<string>>>("File");
-            
+            rawLoadedLevelData = Content.Load<List<List<string>>>("LoadedLevel");
+
             
             
             // dropdwon menu
@@ -121,8 +125,10 @@ namespace Sokoban
             
             sessionSaving = new SaveProgress(levelDataList);
             
-
             
+            LoadLevelOrProgress sessionLoaded = new LoadLevelOrProgress(rawLoadedLevelData);
+            loadedLevelDataList = sessionLoaded.XMLtoLevel();
+
             // levelData par default 10x20
             alert = new Alert();
             grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel]);
@@ -139,25 +145,26 @@ namespace Sokoban
             currentMouseState = Mouse.GetState();
             dropdownMenu.Update(currentMouseState, previousMouseState);
             previousMouseState = currentMouseState;
+            
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+            MouseState mouse = Mouse.GetState();
             if (currentGameState == GameState.MainMenu && dropdownMenu.GetSelectedIndex() != -1)
             { 
                 currentLevel = dropdownMenu.GetSelectedIndex();
                 currentGameState = GameState.Restart;
             }
-            
-            KeyboardState currentKeyboardState = Keyboard.GetState();
-            MouseState mouse = Mouse.GetState();
-            if(currentKeyboardState.IsKeyDown(Keys.Space))
-            {
-                currentGameState = GameState.Restart;
-            }
             if (currentGameState == GameState.MainMenu)
             {
-                
-                
                 if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
                 {
                     currentGameState = GameState.Playing; // Start the game
+                }
+                if (loadButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
+                {
+                    levelDataList = loadedLevelDataList;
+                    grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                    player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);                    
+                    currentGameState = GameState.Playing;
                 }
             }
             else if (currentGameState == GameState.Restart)
@@ -202,6 +209,11 @@ namespace Sokoban
             player.Update(gameTime, GraphicsDevice);
             
             }
+            
+            if(currentKeyboardState.IsKeyDown(Keys.Space))
+            {
+                currentGameState = GameState.Restart;
+            }
             previousKeyboardState = currentKeyboardState;
 
             base.Update(gameTime);
@@ -222,7 +234,29 @@ namespace Sokoban
                 for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
                 rect.SetData(data);
                 spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
+                
+                
+                
                 spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
+                
+                spriteBatch.Draw(loadButtonTexture, loadButtonRect, Color.White);
+                
+                // tutorial box
+                Rectangle boxRect = new Rectangle(670, 200, 300, 100); // X, Y, Width, Height
+                string message = "Press Space to restart Level\nPress N to go to next Level\nPress S to save level progress";
+
+                Texture2D boxTexture = new Texture2D(GraphicsDevice, 1, 1);
+                boxTexture.SetData(new[] { Color.Gray });
+                spriteBatch.Draw(boxTexture, boxRect, Color.Gray * 0.8f);
+
+                Vector2 textSize = _font.MeasureString(message);
+                Vector2 textPosition = new Vector2(
+                    boxRect.X + (boxRect.Width - textSize.X) / 2,
+                    boxRect.Y + (boxRect.Height - textSize.Y) / 2
+                );
+
+                spriteBatch.DrawString(_font, message, textPosition, Color.White);
+                
             }
             
             
