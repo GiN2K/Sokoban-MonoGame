@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework.Content;
+using Sokoban.Content;
 
 namespace Sokoban
 {
@@ -20,7 +21,7 @@ namespace Sokoban
         }
 
 
-        private int totalLevels = 0;
+        private int totalLevels;
         private int currentLevel = 0;
         public GameState currentGameState = GameState.MainMenu;
         
@@ -37,6 +38,9 @@ namespace Sokoban
         private Texture2D playerTexture;
         private Texture2D boxValidTexture;
         
+        private Texture2D loadButtonTexture;
+        private Rectangle loadButtonRect = new Rectangle(700, 70, 250, 80);
+
         
         
         private Texture2D playButtonTexture;
@@ -45,16 +49,26 @@ namespace Sokoban
         private List<List<string>> rawLevelData;
         private List<string[,]> levelDataList = new List<string[,]>();
 
+
+        private List<List<string>> rawLoadedLevelData;
+        private List<string[,]> loadedLevelDataList = new List<string[,]>();
+
         
         public static SpriteFont _font;
         
-
-        private string alertMessage = "Felicitations! Tu as reussi";
-        private TimeSpan alertDuration = TimeSpan.FromSeconds(10); // alert duraion, je vais la changer pour quil reste avant que lutilisateur change le niveau
-        private TimeSpan alertTime;
-        
         private Alert alert;
 
+        private SaveProgress sessionSaving;
+        
+        
+        
+        //dropdown menu
+        Texture2D buttonTexture;
+        Texture2D itemTexture;
+        DropdownMenu dropdownMenu;
+        
+        
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -85,45 +99,58 @@ namespace Sokoban
             boxValidTexture = Content.Load<Texture2D>("boxValid");
             _font = Content.Load<SpriteFont>("SpriteFont");
             playButtonTexture = Content.Load<Texture2D>("play");
-            
-            // levelDataList = Content.Load<List<List<string>>>("File"); 
+            loadButtonTexture = Content.Load<Texture2D>("load");
 
             rawLevelData = Content.Load<List<List<string>>>("File");
-            
-            
-            foreach (var level in rawLevelData)
-            {
-                string[,] levelData = new string[10, 20];
-                for (int i = 0; i < 10; i++)
-                {
-                    var rowAsArray = level[i].Split(',');
-
-                    for (int j = 0; j < 20; j++)
-                    {
-                        levelData[i, j] = rowAsArray[j];
-                    }
-                }
-                levelDataList.Add(levelData);
-                totalLevels++;
-            }
-            
-            
-            
+            rawLoadedLevelData = Content.Load<List<List<string>>>("LoadedLevel");
 
             
+            
+            // dropdwon menu
+            buttonTexture = new Texture2D(GraphicsDevice, 1, 1);
+            buttonTexture.SetData(new[] { Color.White });
+
+            itemTexture = new Texture2D(GraphicsDevice, 1, 1);
+            itemTexture.SetData(new[] { Color.Gray });
+
+            List<string> items = new List<string> { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10","Level 11", "Level 12" };
+            dropdownMenu = new DropdownMenu(_font, buttonTexture, itemTexture, new Vector2(100, 100), 200, items);
+
+            
+            //Load Level Data from XML or progress
+            LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
+            levelDataList = session.XMLtoLevel();
+            
+            totalLevels = session.GetTotalLevels();
+            
+            sessionSaving = new SaveProgress(levelDataList);
+            
+            
+            LoadLevelOrProgress sessionLoaded = new LoadLevelOrProgress(rawLoadedLevelData);
+            loadedLevelDataList = sessionLoaded.XMLtoLevel();
+
             // levelData par default 10x20
             alert = new Alert();
             grid = new Grid( wallTexture, boxTexture, targetTexture,boxValidTexture,levelDataList[currentLevel]);
             player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
             
         }
-
+        MouseState currentMouseState;
+        MouseState previousMouseState;
+        KeyboardState previousKeyboardState;
+        
         protected override void Update(GameTime gameTime)
         {
+            // dropdown menu
+            currentMouseState = Mouse.GetState();
+            dropdownMenu.Update(currentMouseState, previousMouseState);
+            previousMouseState = currentMouseState;
+            
             KeyboardState currentKeyboardState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
-            if(currentKeyboardState.IsKeyDown(Keys.Space))
-            {
+            if (currentGameState == GameState.MainMenu && dropdownMenu.GetSelectedIndex() != -1)
+            { 
+                currentLevel = dropdownMenu.GetSelectedIndex();
                 currentGameState = GameState.Restart;
             }
             if (currentGameState == GameState.MainMenu)
@@ -131,6 +158,13 @@ namespace Sokoban
                 if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
                 {
                     currentGameState = GameState.Playing; // Start the game
+                }
+                if (loadButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
+                {
+                    levelDataList = loadedLevelDataList;
+                    grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                    player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);                    
+                    currentGameState = GameState.Playing;
                 }
             }
             else if (currentGameState == GameState.Restart)
@@ -142,15 +176,59 @@ namespace Sokoban
             }
             else if(currentGameState == GameState.Playing)
             {
+                if (currentKeyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S))
+                {
+                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "Save1.xml");
+                    sessionSaving.ChangeLevel(grid.GetCells(),currentLevel);
+                    sessionSaving.SaveToXML(filePath);
+                }
+                
+                // avec echap on revien au menu
+                if (currentKeyboardState.IsKeyDown(Keys.Escape)&& previousKeyboardState.IsKeyUp(Keys.Escape))
+                {
+                    currentGameState = GameState.MainMenu;
+                    // on recharge la partie
+                    LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
+                    levelDataList = session.XMLtoLevel();
+                    grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                    player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
+                    
+                }
+             
+                
+                
                 if (grid.IsGameWon()) // Alerte si le jeu est gagné
                 {
                     alert.SetShowAlert(true);
                     alert.Update(gameTime, grid);
+                    if (currentKeyboardState.IsKeyDown(Keys.N) && previousKeyboardState.IsKeyUp(Keys.N))
+                    {
+                        if(currentLevel  == totalLevels-1)
+                        {
+                            // currentLevel = 0;
+                            dropdownMenu.SetSelectedIndex(-1);
+                            currentGameState = GameState.MainMenu;
+                        }
+                        else{
+                        alert.SetShowAlert(false);
+                        currentLevel += 1;
+                        currentGameState = GameState.Restart;
+                        }
+                    }
+                    
+                    
                 }
 
             player.Update(gameTime, GraphicsDevice);
             
             }
+            
+            if(currentKeyboardState.IsKeyDown(Keys.Space))
+            {
+                currentGameState = GameState.Restart;
+            }
+            previousKeyboardState = currentKeyboardState;
+
             base.Update(gameTime);
         }
 
@@ -162,14 +240,36 @@ namespace Sokoban
             
             if (currentGameState == GameState.MainMenu)
             {
-                
+                dropdownMenu.Draw(spriteBatch);
 
                 Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
                 Color[] data = new Color[200 * 50];
                 for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
                 rect.SetData(data);
                 spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
+                
+                
+                
                 spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
+                
+                spriteBatch.Draw(loadButtonTexture, loadButtonRect, Color.White);
+                
+                // tutorial box
+                Rectangle boxRect = new Rectangle(670, 200, 300, 100); // X, Y, Width, Height
+                string message = "Press Space to restart Level\nPress N to go to next Level\nPress S to save level progress";
+
+                Texture2D boxTexture = new Texture2D(GraphicsDevice, 1, 1);
+                boxTexture.SetData(new[] { Color.Gray });
+                spriteBatch.Draw(boxTexture, boxRect, Color.Gray * 0.8f);
+
+                Vector2 textSize = _font.MeasureString(message);
+                Vector2 textPosition = new Vector2(
+                    boxRect.X + (boxRect.Width - textSize.X) / 2,
+                    boxRect.Y + (boxRect.Height - textSize.Y) / 2
+                );
+
+                spriteBatch.DrawString(_font, message, textPosition, Color.White);
+                
             }
             
             

@@ -9,8 +9,11 @@
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/File.spritefont</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/File.xml</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/ground.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/load.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/LoadedLevel.xml</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/play.png</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/player.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/Screenshot_61.png</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/target.png</File>
     <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/wall.png</File>
   </SourceFiles>
@@ -18,6 +21,9 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>SpriteFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

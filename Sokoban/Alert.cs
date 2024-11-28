@@ -13,7 +13,7 @@ namespace Sokoban;
 public class Alert
 {
     private bool showAlert;
-    private string alertMessage = "Felicitations! Tu as reussi";
+    private string alertMessage = "Felicitations! Tu as reussi, Click Sur N pour passer au niveau suivant";
 
     private TimeSpan
         alertDuration =
@@ -54,14 +54,14 @@ public class Alert
     {
         
             Vector2 alertPosition = new Vector2(100, 100);
-            spriteBatch.DrawString(Game1._font, alertMessage, alertPosition, Color.Red);
+            spriteBatch.DrawString(Game1._font, alertMessage, alertPosition, Color.White);
 
             // Background Box Pour alert
-            Texture2D rect = new Texture2D(graphicsDevice, 200, 50);
-            Color[] data = new Color[200 * 50];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
+            Texture2D rect = new Texture2D(graphicsDevice, 500, 50);
+            Color[] data = new Color[500 * 50];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.7f;
             rect.SetData(data);
-            spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, 220, 70), Color.White);
+            spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, 500, 70), Color.White);
         
     }
 
