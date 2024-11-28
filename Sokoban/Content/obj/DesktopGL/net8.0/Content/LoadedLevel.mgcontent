@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/LoadedLevel.xml</SourceFile>
-  <SourceTime>2024-11-28T04:12:22.1615001+01:00</SourceTime>
-  <DestFile>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/bin/DesktopGL/Content/LoadedLevel.xnb</DestFile>
-  <DestTime>2024-11-28T04:12:27.8086566+01:00</DestTime>
+  <SourceFile>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/LoadedLevel.xml</SourceFile>
+  <SourceTime>2024-11-28T15:00:22.5586932+01:00</SourceTime>
+  <DestFile>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/bin/DesktopGL/Content/LoadedLevel.xnb</DestFile>
+  <DestTime>2024-11-28T15:01:41.3488447+01:00</DestTime>
   <Importer>XmlImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>PassThroughProcessor</Processor>
