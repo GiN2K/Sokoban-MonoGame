@@ -4,15 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/box.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/boxValid.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.spritefont</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/File.xml</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/ground.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/play.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/player.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/target.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban/Sokoban/Content/wall.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/box.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/boxValid.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/File.spritefont</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/File.xml</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/ground.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/play.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/player.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/target.png</File>
+    <File>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/wall.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
