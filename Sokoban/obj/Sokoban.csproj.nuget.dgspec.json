@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Users\\Amine\\RiderProjects\\Sokoban\\Sokoban\\Sokoban.csproj": {}
+    "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj": {}
   },
   "projects": {
-    "F:\\Users\\Amine\\RiderProjects\\Sokoban\\Sokoban\\Sokoban.csproj": {
+    "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Users\\Amine\\RiderProjects\\Sokoban\\Sokoban\\Sokoban.csproj",
+        "projectUniqueName": "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj",
         "projectName": "Sokoban",
-        "projectPath": "F:\\Users\\Amine\\RiderProjects\\Sokoban\\Sokoban\\Sokoban.csproj",
-        "packagesPath": "F:\\Users\\Amine\\.nuget\\packages\\",
-        "outputPath": "F:\\Users\\Amine\\RiderProjects\\Sokoban\\Sokoban\\obj\\",
+        "projectPath": "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj",
+        "packagesPath": "C:\\Users\\amaya\\.nuget\\packages\\",
+        "outputPath": "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "F:\\Users\\Amine\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\amaya\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "F:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
