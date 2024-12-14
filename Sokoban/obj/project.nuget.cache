@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "lL5z6w6jggM=",
+  "dgSpecHash": "7Cp7JsLLbVA=",
   "success": true,
-  "projectFilePath": "E:\\L3 miage\\Projet_Cabinet_Infirmier\\game\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj",
+  "projectFilePath": "F:\\Users\\Amine\\RiderProjects\\Sokoban-MonoGame\\Sokoban\\Sokoban.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\amaya\\.nuget\\packages\\monogame.content.builder.task\\3.8.2.1105\\monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
-    "C:\\Users\\amaya\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
-    "C:\\Users\\amaya\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
-    "C:\\Users\\amaya\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
-    "C:\\Users\\amaya\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\amaya\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "F:\\Users\\Amine\\.nuget\\packages\\monogame.content.builder.task\\3.8.2.1105\\monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
+    "F:\\Users\\Amine\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
+    "F:\\Users\\Amine\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
+    "F:\\Users\\Amine\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
+    "F:\\Users\\Amine\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "F:\\Users\\Amine\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

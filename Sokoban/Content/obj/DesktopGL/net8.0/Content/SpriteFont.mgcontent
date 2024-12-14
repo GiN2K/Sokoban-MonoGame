@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/File.spritefont</SourceFile>
-  <SourceTime>2024-11-28T14:49:09.9240538+01:00</SourceTime>
-  <DestFile>E:/L3 miage/Projet_Cabinet_Infirmier/game/Sokoban-MonoGame/Sokoban/Content/bin/DesktopGL/Content/SpriteFont.xnb</DestFile>
-  <DestTime>2024-11-28T15:01:41.3205393+01:00</DestTime>
+  <SourceFile>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/File.spritefont</SourceFile>
+  <SourceTime>2024-12-14T23:08:57.3093771+01:00</SourceTime>
+  <DestFile>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/bin/DesktopGL/Content/SpriteFont.xnb</DestFile>
+  <DestTime>2024-12-14T23:12:39.4236483+01:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

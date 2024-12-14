@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sokoban
-build_property.ProjectDir = E:\L3 miage\Projet_Cabinet_Infirmier\game\Sokoban-MonoGame\Sokoban\
+build_property.ProjectDir = F:\Users\Amine\RiderProjects\Sokoban-MonoGame\Sokoban\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

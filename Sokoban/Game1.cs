@@ -178,9 +178,15 @@ namespace Sokoban
             {
                 if (currentKeyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S))
                 {
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "Save1.xml");
+                    // string filePath = @"F:\Users\Amine\RiderProjects\Sokoban-MonoGame\Sokoban\Content\LoadedLevel.xml";
+                  
+                    string baseDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    baseDirectory = baseDirectory.Substring(0, baseDirectory.Length - 4);
+                    string saveDirectory = Path.Combine(baseDirectory, "Content");
+                    string filePath = Path.Combine(saveDirectory, "LoadedLevel.xml");
                     sessionSaving.ChangeLevel(grid.GetCells(),currentLevel);
                     sessionSaving.SaveToXML(filePath);
+
                 }
                 
                 // avec echap on revien au menu
@@ -256,7 +262,7 @@ namespace Sokoban
                 
                 // tutorial box
                 Rectangle boxRect = new Rectangle(670, 200, 300, 100); // X, Y, Width, Height
-                string message = "Press Space to restart Level\nPress N to go to next Level\nPress S to save level progress";
+                string message = "Press Space to restart Level\nPress N to go to next Level\nPress S to save level progress\nPress Echap to go to Main menu";
 
                 Texture2D boxTexture = new Texture2D(GraphicsDevice, 1, 1);
                 boxTexture.SetData(new[] { Color.Gray });
