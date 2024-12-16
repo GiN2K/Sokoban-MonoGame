@@ -21,15 +21,15 @@
         <xs:sequence>
             <xs:element name="Item" type="LevelType" maxOccurs="unbounded"/>
         </xs:sequence>
-         <!-- <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>  -->
+         <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>  
     </xs:complexType>
 
     <!-- Definition du type Simple AssetTypeAttributeType  -->
-    <!-- <xs:simpleType name="AssetTypeAttributeType">
+     <xs:simpleType name="AssetTypeAttributeType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="System.Collections.Generic.List[System.Collections.Generic.List[string]]"/>
         </xs:restriction>
-    </xs:simpleType>-->
+    </xs:simpleType>
 
     <!-- Definition de type Complexe pour Level (Item) -->
     <xs:complexType name="LevelType">
