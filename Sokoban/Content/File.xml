@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:ns="Microsoft.Xna.Framework"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns="http://www.example.com/XnaContent"
-            xsi:schemaLocation="http://www.example.com/XnaContent xsd/XnaContent.xsd">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.amodifier.com/XnaContent"
+            xsi:schemaLocation="http://www.amodifier.com/XnaContent xsd/XnaContent.xsd">
     <Asset Type="System.Collections.Generic.List[System.Collections.Generic.List[string]]">
        <!--Level 1 (Level Saved)-->
     <Item>
