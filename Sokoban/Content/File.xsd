@@ -1,28 +1,58 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name = "XnaContent">
-<xs:complexType>
-  <xs:sequence>
-  <xs:element name = "Asset">
-<xs:complexType>
-<xs:sequence>
-<xs:element name = "Item">
-<xs:complexType>
-<xs:sequence>
-  <xs:element type = " xs: string" name = "Item"/>
-  <xs:element type = " xs: string" name = "Item"/>
-  <xs:element type = " xs: string" name = "Item"/>
-  <xs:element type = " xs: string" name = "Item"/>
-  <xs:element type = " xs: string" name = "Item"/>
-  <xs:element type = " xs: string" name = "Item"/>
- </xs:sequence>
-</xs:complexType>
-</xs:element>
- </xs:sequence>
-<xs:attribute type="xs:string" name="Type"/>
-</xs:complexType>
-</xs:element>
- </xs:sequence>
-<xs:attribute type = "xs:string" name = "xmlns:ns"/>
-</xs:complexType>
-</xs:element>
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.com/XnaContent"
+           xmlns="http://www.example.com/XnaContent"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
+    <!-- Élément Racine -->
+    <xs:element name="XnaContent" type="XnaContentType"/>
+
+    <!-- Type Complexe pour XnaContent -->
+    <xs:complexType name="XnaContentType">
+        <xs:sequence>
+            <xs:element name="Asset" type="AssetType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Type Complexe pour Asset -->
+    <xs:complexType name="AssetType">
+        <xs:sequence>
+            <xs:element name="Item" type="LevelType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>
+    </xs:complexType>
+
+    <!-- Type Simple pour l'Attribut Type de Asset -->
+    <xs:simpleType name="AssetTypeAttributeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="System.Collections.Generic.List[System.Collections.Generic.List[string]]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type Complexe pour Level (Item) -->
+    <xs:complexType name="LevelType">
+        <xs:sequence>
+            <xs:element name="Item" type="RowType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Type Simple pour Row (Item) avec Validation Regex -->
+    <xs:simpleType name="RowType">
+        <xs:restriction base="xs:string">
+            <!-- 
+                Cette expression régulière valide une ligne composée de 20 éléments séparés par des virgules.
+                Chaque élément peut être :
+                - #
+                - Un espace ( )
+                - P
+                - B
+                - .
+                - p
+            -->
+            <xs:pattern value="^([#PB\.p ]\,){19}[#PB\.p ]$"/>
+        </xs:restriction>
+    </xs:simpleType>
+
 </xs:schema>
+
