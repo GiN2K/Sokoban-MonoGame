@@ -7,32 +7,7 @@ using System.Xml.Linq;
 
 namespace Sokoban.Content;
 
-public class SaveProgress
-{
-    private List<string[,]> levels;
-    private int lastLevelSaved;
-    
-    public SaveProgress(List<string[,]> levels)
-    {
-        this.levels = DeepCopy(levels);
-    }
-    private List<string[,]> DeepCopy(List<string[,]> levels)
-    {
-        List<string[,]> copy = new List<string[,]>();
-        foreach (var level in levels)
-        {
-            string[,] newLevel = new string[10, 20];
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 20; j++)
-                {
-                    newLevel[i, j] = level[i, j];
-                }
-            }
-            copy.Add(newLevel);
-        }
-        return copy;
-    }
+
 
     public void ChangeLevel(string[,] levelChanging,int levelIndex)
     {
