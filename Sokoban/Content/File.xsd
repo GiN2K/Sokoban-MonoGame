@@ -21,7 +21,7 @@
         <xs:sequence>
             <xs:element name="Item" type="LevelType" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>
+        <xs:attribute name="Type" type="AssetTypeAttributeType" />
     </xs:complexType>
 
     <!-- Definition du type Simple AssetTypeAttributeType  -->
