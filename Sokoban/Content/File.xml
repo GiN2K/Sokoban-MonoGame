@@ -2,7 +2,7 @@
 <XnaContent xmlns:ns="Microsoft.Xna.Framework"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://www.amodifier.com/XnaContent"
-            xsi:schemaLocation="http://www.amodifier.com/XnaContent xsd/XnaContent.xsd">
+            xsi:schemaLocation="http://www.amodifier.com/XnaContent Content/File.xsd">
     <Asset Type="System.Collections.Generic.List[System.Collections.Generic.List[string]]">
        <!--Level 1 (Level Saved)-->
     <Item>
