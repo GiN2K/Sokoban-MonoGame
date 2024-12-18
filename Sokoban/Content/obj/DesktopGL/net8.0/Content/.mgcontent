@@ -4,18 +4,18 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/box.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/boxValid.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/File.spritefont</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/File.xml</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/ground.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/load.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/LoadedLevel.xml</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/play.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/player.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/Screenshot_61.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/target.png</File>
-    <File>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/wall.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/box.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/boxValid.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/File.spritefont</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/File.xml</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/ground.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/load.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/LoadedLevel.xml</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/play.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/player.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/Screenshot_61.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/target.png</File>
+    <File>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/wall.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

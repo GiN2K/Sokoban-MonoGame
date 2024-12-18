@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/File.xml</SourceFile>
-  <SourceTime>2024-12-14T23:08:57.310377+01:00</SourceTime>
-  <DestFile>F:/Users/Amine/RiderProjects/Sokoban-MonoGame/Sokoban/Content/bin/DesktopGL/Content/File.xnb</DestFile>
-  <DestTime>2024-12-14T23:12:39.4276507+01:00</DestTime>
+  <SourceFile>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/File.xml</SourceFile>
+  <SourceTime>2024-12-19T00:31:39.4479221+01:00</SourceTime>
+  <DestFile>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/bin/DesktopGL/Content/File.xnb</DestFile>
+  <DestTime>2024-12-19T00:31:55.7960401+01:00</DestTime>
   <Importer>XmlImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>PassThroughProcessor</Processor>

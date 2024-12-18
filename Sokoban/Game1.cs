@@ -192,12 +192,13 @@ namespace Sokoban
                 // avec echap on revien au menu
                 if (currentKeyboardState.IsKeyDown(Keys.Escape)&& previousKeyboardState.IsKeyUp(Keys.Escape))
                 {
+                    dropdownMenu.SetSelectedIndex(-1);
                     currentGameState = GameState.MainMenu;
                     // on recharge la partie
-                    LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
-                    levelDataList = session.XMLtoLevel();
-                    grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
-                    player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
+                    // LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
+                    // levelDataList = session.XMLtoLevel();
+                    // grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                    // player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
                     
                 }
              
@@ -233,6 +234,9 @@ namespace Sokoban
             {
                 currentGameState = GameState.Restart;
             }
+            
+            
+            
             previousKeyboardState = currentKeyboardState;
 
             base.Update(gameTime);
