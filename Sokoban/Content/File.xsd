@@ -50,7 +50,7 @@
                    - . : point à atteindre pour gagner
                    - ' ' (espace) : Vide
                       -->
-            <xs:pattern value="^\s*(#|[PB]|\.|\s)(\s*,\s*(#|[PB]|\.|\s)){19}\s*$/>
+            <xs:pattern value="^\s*(#|[PB]|\.|\s)(\s*,\s*(#|[PB]|\.|\s)){19}\s*$ />
         </xs:restriction>
     </xs:simpleType>
 
