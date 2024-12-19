@@ -42,13 +42,13 @@
     <xs:simpleType name="RowType">
         <xs:restriction base="xs:string">
             <!-- 
-                Cette expression régulière valide la ligne composée de 20 éléments séparés par des virgules
-                Chaque élément peut être :
-                - #
-                - Un espace ( )
-                - P
-                - B
-                - .
+                Le type RowType représente une ligne composée de 20 caractères séparés par des virgules.
+                Les caractères valides incluent :
+                   - # : Mur
+                   - P : Joueur
+                   - B : Bloc
+                   - . : point à atteindre pour gagner
+                   - ' ' (espace) : Vide
                       -->
            <xs:pattern value="^([#PB\. ]\,){19}[#PB\. ]$"/>
         </xs:restriction>
