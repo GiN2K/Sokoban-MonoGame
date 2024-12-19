@@ -44,7 +44,7 @@ namespace Sokoban
         
         
         private Texture2D playButtonTexture;
-        private Rectangle playButtonRect = new Rectangle(400, 150, 200, 200);
+        private Rectangle playButtonRect = new Rectangle(370, 150, 250, 80);
 
         private List<List<string>> rawLevelData;
         private List<string[,]> levelDataList = new List<string[,]>();
@@ -266,7 +266,7 @@ namespace Sokoban
                 
                 // tutorial box
                 Rectangle boxRect = new Rectangle(670, 200, 300, 100); // X, Y, Width, Height
-                string message = "Press Space to restart Level\nPress N to go to next Level\nPress S to save level progress\nPress Echap to go to Main menu";
+                string message = "Espace pour redemarrer le niveau\nN pour passer au niveau prochain\nS pour sauvgarder la partie\nEchap pour aller au menu principale";
 
                 Texture2D boxTexture = new Texture2D(GraphicsDevice, 1, 1);
                 boxTexture.SetData(new[] { Color.Gray });
