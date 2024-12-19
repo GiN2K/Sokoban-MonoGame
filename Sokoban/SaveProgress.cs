@@ -55,7 +55,7 @@ public class SaveProgress
             var levelComment = new XComment($"Level {i + 1}");
             if(i == lastLevelSaved)
             {
-                levelComment = new XComment($"Level {i + 1} (Level Saved)");
+                levelComment = new XComment($"Level {i + 1} (Niveau enrigstré)");
                 assetElement.Add(levelComment);
             }
             

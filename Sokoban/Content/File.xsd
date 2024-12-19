@@ -1,58 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.amodifer.com/XnaContent"
-           xmlns="http://www.amodifer.com/XnaContent"
-           xmlns:ns="Microsoft.Xna.Framework"
-           elementFormDefault="qualified"
-           attributeFormDefault="unqualified">
+           targetNamespace="http://www.xnaframework.com/content"
+           xmlns="http://www.xnaframework.com/content"
+           elementFormDefault="qualified">
 
-    <!-- ici Declaration d'un élément racine de nom XnaContent et de type XnaContentType -->
     <xs:element name="XnaContent" type="XnaContentType"/>
 
-    <!-- Definition du type Complexe XnaContentType de l'élément racine XnaContent -->
     <xs:complexType name="XnaContentType">
         <xs:sequence>
             <xs:element name="Asset" type="AssetType"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Definition du type Complexe Definition du type Complexe de l'élément Asset  -->
     <xs:complexType name="AssetType">
         <xs:sequence>
             <xs:element name="Item" type="LevelType" maxOccurs="unbounded"/>
         </xs:sequence>
-         <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>  
+        <xs:attribute name="Type" type="AssetTypeAttributeType" use="required"/>
     </xs:complexType>
 
-    <!-- Definition du type Simple AssetTypeAttributeType  -->
-     <xs:simpleType name="AssetTypeAttributeType">
+    <xs:simpleType name="AssetTypeAttributeType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="System.Collections.Generic.List[System.Collections.Generic.List[string]]"/>
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- Definition de type Complexe pour Level (Item) -->
     <xs:complexType name="LevelType">
         <xs:sequence>
-            <xs:element name="Item" type="RowType" maxOccurs="unbounded"/>
+            <xs:element name="Item" type="RowType" minOccurs="10" maxOccurs="10"/>
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Definition du type Simple pour Row (Item) avec pattern -->
     <xs:simpleType name="RowType">
         <xs:restriction base="xs:string">
             <!-- 
-                Cette expression régulière valide la ligne composée de 20 éléments séparés par des virgules
-                Chaque élément peut être :
-                - #
-                - Un espace ( )
-                - P
-                - B
-                - .
-                      -->
-           <xs:pattern value="^([#PB\.p ]\,){19}[#PB\.p ]$"/>
+                Expression Reguliere ne marche pas
+            -->
+            <xs:pattern value="^(?:B|P| |\.P|\.B|#|\.)(?:,(?:B|P| |\.P|\.B|#|\.)){19}$" />
         </xs:restriction>
     </xs:simpleType>
 
 </xs:schema>
-
