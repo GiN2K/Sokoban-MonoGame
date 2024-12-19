@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:ns="Microsoft.Xna.Framework"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://www.xnaframework.com/content"
@@ -30,7 +30,7 @@
             <Item>#,#,#,#,#,#, ,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
             <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
         </Item>
-      <!--Level 3
+      <!--Level 3 -->
         <Item>
             <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
             <Item>#,#,#,#, , , ,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
@@ -42,7 +42,7 @@
             <Item>#,#, , , ,., , ,#,#,#,#,#,#,#,#,#,#,#,#</Item>
             <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
             <Item>#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#,#</Item>
-        </Item>-->
+        </Item>
         <!--Level 4-->
         <Item>
             <Item>#,#,#,#,#,#,#,#, , ,#,#,#,#,#,#,#,#,#,#</Item>
