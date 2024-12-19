@@ -3,8 +3,7 @@
            targetNamespace="http://www.amodifer.com/XnaContent"
            xmlns="http://www.amodifer.com/XnaContent"
            xmlns:ns="Microsoft.Xna.Framework"
-           elementFormDefault="qualified"
-           attributeFormDefault="unqualified">
+           elementFormDefault="qualified">
 
     <!-- ici Declaration d'un élément racine de nom XnaContent et de type XnaContentType -->
     <xs:element name="XnaContent" type="XnaContentType"/>
@@ -33,10 +32,11 @@
 
     <!-- Definition de type Complexe pour Level (Item) -->
     <xs:complexType name="LevelType">
-        <xs:sequence>
-            <xs:element name="Item" type="RowType" maxOccurs="unbounded"/>
-        </xs:sequence>
+       <xs:sequence>
+           <xs:element name="Item" type="RowType" minOccurs="10" maxOccurs="10"/>
+       </xs:sequence>
     </xs:complexType>
+
 
     <!-- Definition du type Simple pour Row (Item) avec pattern -->
     <xs:simpleType name="RowType">
