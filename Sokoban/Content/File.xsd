@@ -50,7 +50,7 @@
                 - B
                 - .
                       -->
-           <xs:pattern value="^([#PB\.p ]\,){19}[#PB\.p ]$"/>
+           <xs:pattern value="^([#PB\. ]\,){19}[#PB\. ]$"/>
         </xs:restriction>
     </xs:simpleType>
 
