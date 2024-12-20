@@ -60,6 +60,20 @@ namespace Sokoban
 
         private SaveProgress sessionSaving;
         
+        private HashSet<int> completedLevels = new HashSet<int>();
+
+        private void MarkLevelAsCompleted(int levelNumber)
+        {
+            if (!completedLevels.Contains(levelNumber))
+            {
+                completedLevels.Add(levelNumber);
+            }
+        }
+
+        private string GetCompletedLevelsAsString()
+        {
+            return string.Join(",", completedLevels);
+        }
         
         
         //dropdown menu
@@ -209,26 +223,52 @@ namespace Sokoban
              
                 
                 
-                if (grid.IsGameWon()) // Alerte si le jeu est gagné
+                if (grid.IsGameWon() && !alert.GetShowAlert())
                 {
-                    alert.SetShowAlert(true);
-                    alert.Update(gameTime, grid);
-                    if (currentKeyboardState.IsKeyDown(Keys.N) && previousKeyboardState.IsKeyUp(Keys.N))
+
+                    MarkLevelAsCompleted(currentLevel + 1);
+
+                    string completedLevels = GetCompletedLevelsAsString();
+
+                    string baseDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    baseDirectory = baseDirectory.Substring(0, baseDirectory.Length - 4);
+                    string contentDirectory = Path.Combine(baseDirectory, "Content");
+
+                    string fileXmlPath = Path.Combine(contentDirectory, "File.xml");
+                    string xsltPath = Path.Combine(contentDirectory, "GenerateLevelsStatus.xslt");
+                    string outputXmlPath = Path.Combine(contentDirectory, "LevelsStatus.xml");
+
+                    
+
+                    if (File.Exists(fileXmlPath) && File.Exists(xsltPath))
                     {
-                        if(currentLevel  == totalLevels-1)
-                        {
-                            // currentLevel = 0;
-                            dropdownMenu.SetSelectedIndex(-1);
-                            currentGameState = GameState.MainMenu;
-                        }
-                        else{
-                        alert.SetShowAlert(false);
-                        currentLevel += 1;
-                        currentGameState = GameState.Restart;
-                        }
+                        
+                            XSLTProcessor.GenerateLevelsStatus(fileXmlPath, xsltPath, outputXmlPath, completedLevels);
+                        
                     }
                     
-                    
+
+
+
+                    alert.SetShowAlert(true);
+                    alert.Update(gameTime, grid);
+                }
+
+                if (alert.GetShowAlert() && currentKeyboardState.IsKeyDown(Keys.N) && previousKeyboardState.IsKeyUp(Keys.N))
+                {
+                    if (currentLevel >= totalLevels - 1)
+                    {
+                        dropdownMenu.SetSelectedIndex(-1);
+                        currentGameState = GameState.MainMenu;
+                    }
+                    else
+                    {
+                        alert.SetShowAlert(false); 
+                        currentLevel++; 
+                        grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                        player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
+                        currentGameState = GameState.Restart;
+                    }
                 }
 
             player.Update(gameTime, GraphicsDevice);

@@ -249,9 +249,6 @@
       "packagesPath": "/Users/amine/.nuget/packages/",
       "outputPath": "/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/obj/",
       "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "/Users/amine/.nuget/NuGet/NuGet.Config"
-      ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
