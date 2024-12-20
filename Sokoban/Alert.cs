@@ -53,16 +53,15 @@ public class Alert
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
     {
         
-            Vector2 alertPosition = new Vector2(100, 100);
-            spriteBatch.DrawString(Game1._font, alertMessage, alertPosition, Color.White);
-
+            Vector2 alertPosition = new Vector2((graphicsDevice.Viewport.Width - Game1._font.MeasureString(alertMessage).X) / 2, (graphicsDevice.Viewport.Height - Game1._font.MeasureString(alertMessage).Y) / 2);
+                    spriteBatch.DrawString(Game1._font, alertMessage, alertPosition, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0.5f);
+                        spriteBatch.DrawString(Game1._font, alertMessage, alertPosition, Color.White);
             // Background Box Pour alert
             Texture2D rect = new Texture2D(graphicsDevice, 500, 50);
             Color[] data = new Color[500 * 50];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.7f;
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.White * 0.2f;
             rect.SetData(data);
-            spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, 500, 70), Color.White);
-        
+            spriteBatch.Draw(rect, new Rectangle((int)alertPosition.X - 10, (int)alertPosition.Y - 10, (int)Game1._font.MeasureString(alertMessage).X + 20, (int)Game1._font.MeasureString(alertMessage).Y + 20), Color.Black);        
     }
 
     

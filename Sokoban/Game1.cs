@@ -39,7 +39,7 @@ namespace Sokoban
         private Texture2D boxValidTexture;
         
         private Texture2D loadButtonTexture;
-        private Rectangle loadButtonRect = new Rectangle(700, 70, 250, 80);
+        private Rectangle loadButtonRect = new Rectangle(370, 250, 250, 80);
 
         
         
@@ -252,12 +252,13 @@ namespace Sokoban
             {
                 dropdownMenu.Draw(spriteBatch);
 
-                Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
-                Color[] data = new Color[200 * 50];
-                for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
-                rect.SetData(data);
-                spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
-                
+                //
+                // Texture2D rect = new Texture2D(GraphicsDevice, 200, 50);
+                // Color[] data = new Color[200 * 50];
+                // for (int i = 0; i < data.Length; ++i) data[i] = Color.Black * 0.8f;
+                // rect.SetData(data);
+                // spriteBatch.Draw(rect, new Rectangle(0, 0, 1000, 500), Color.Black);
+                //
                 
                 
                 spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
@@ -265,7 +266,7 @@ namespace Sokoban
                 spriteBatch.Draw(loadButtonTexture, loadButtonRect, Color.White);
                 
                 // tutorial box
-                Rectangle boxRect = new Rectangle(670, 200, 300, 100); // X, Y, Width, Height
+                Rectangle boxRect = new Rectangle(350, 0, 300, 100); // X, Y, Width, Height
                 string message = "Espace pour redemarrer le niveau\nN pour passer au niveau prochain\nS pour sauvgarder la partie\nEchap pour aller au menu principale";
 
                 Texture2D boxTexture = new Texture2D(GraphicsDevice, 1, 1);
