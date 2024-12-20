@@ -28,9 +28,9 @@ Avant de commencer, assurez-vous d'avoir installé :
 1. Clonez le dépôt :
 
    ```bash
-   git clone [https://github.com/votre-utilisateur/monogame-sokoban.git](https://github.com/GiN2K/Sokoban-MonoGame.git)
+   git clone  https://github.com/GiN2K/Sokoban-MonoGame.git
    cd sokoban-monogame
-   cs sokoban
+   cd sokoban
    ```
 
 2. Restaurez les dépendances :
