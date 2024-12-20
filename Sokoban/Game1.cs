@@ -157,6 +157,11 @@ namespace Sokoban
             {
                 if (playButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
                 {
+                    currentLevel = 0;
+                    LoadLevelOrProgress session = new LoadLevelOrProgress(rawLevelData);
+                    levelDataList = session.XMLtoLevel();
+                    grid = new Grid(wallTexture, boxTexture, targetTexture, boxValidTexture, levelDataList[currentLevel]);
+                    player = new Player(grid.GetPlayerPositionR(), grid.GetPlayerPositionC(), grid);
                     currentGameState = GameState.Playing; // Start the game
                 }
                 if (loadButtonRect.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
