@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/wall.png</SourceFile>
-  <SourceTime>2024-12-18T23:57:47.6569392+01:00</SourceTime>
-  <DestFile>/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Content/bin/DesktopGL/Content/wall.xnb</DestFile>
-  <DestTime>2024-12-19T00:02:06.0444939+01:00</DestTime>
+  <SourceFile>/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/Content/wall.png</SourceFile>
+  <SourceTime>2024-12-20T01:21:01.076461+01:00</SourceTime>
+  <DestFile>/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/Content/bin/DesktopGL/Content/wall.xnb</DestFile>
+  <DestTime>2024-12-20T01:21:50.8678474+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

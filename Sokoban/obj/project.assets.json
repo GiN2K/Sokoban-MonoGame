@@ -243,11 +243,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Sokoban.csproj",
+      "projectUniqueName": "/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/Sokoban.csproj",
       "projectName": "Sokoban",
-      "projectPath": "/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/Sokoban.csproj",
+      "projectPath": "/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/Sokoban.csproj",
       "packagesPath": "/Users/amine/.nuget/packages/",
-      "outputPath": "/Users/amine/RiderProjects/Sokoban-MonoGame-n/Sokoban/obj/",
+      "outputPath": "/Users/amine/RiderProjects/Sokoban-MonoGame-vers/Sokoban/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/amine/.nuget/NuGet/NuGet.Config"
